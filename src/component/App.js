@@ -5,6 +5,8 @@ import './App.css';
 import { connect } from 'react-redux'
 import { calculate, calculatorLoaded } from '../actions/calculator'
 import { hot } from 'react-hot-loader'
+import PropTypes from 'prop-types';
+
 export class App extends React.Component {
   handleClick = (buttonName) => {
     this.props.calculate(buttonName);
@@ -18,6 +20,7 @@ export class App extends React.Component {
         />
         <ButtonPanel
           clickHandler={this.handleClick}
+          buttons={this.props.buttons}
         />
       </div>
     );
@@ -27,4 +30,9 @@ const mapState = state => ({
   total: state.calculator.total,
   next: state.calculator.next,
 })
+
+App.propTypes = {
+  buttons: PropTypes.array,
+};
+
 export default hot(module)(connect(mapState, { calculate, calculatorLoaded })(App))

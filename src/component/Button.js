@@ -15,12 +15,18 @@ class Button extends React.Component {
       this.props.wide ? "wide" : "",
     ];
 
+    const style = {};
+    if (this.props.color) {
+      style.backgroundColor = this.props.color;
+    }
+
     return (
       <div
         className={className.join(" ").trim()}
       >
         <button
           onClick={this.handleClick}
+          style={style}
         >
           {this.props.name}
         </button>
@@ -31,6 +37,7 @@ class Button extends React.Component {
 Button.propTypes = {
   name: PropTypes.string,
   orange: PropTypes.bool,
+  color: PropTypes.string,
   wide: PropTypes.bool,
   clickHandler: PropTypes.func,
 };

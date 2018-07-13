@@ -5,13 +5,17 @@ import './index.css';
 import rootReducer from './reducers'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import axios from 'axios';
+
 const store = createStore(
   rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
+axios.get("/buttons").then((buttons) => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <App buttons={buttons.data} />
+    </Provider>,
+    document.getElementById('root')
+  );
+});
