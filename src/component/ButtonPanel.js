@@ -26,7 +26,6 @@ class ButtonPanel extends React.Component {
   }
 
   componentDidMount() {
-    // TODO: maybe other functuin see if can cache the first button's "render" result... 
     const buttons = this.props.buttons.map((button) => {
       return <Button key={button.name} clickHandler={this.handleClick} {...button} />;
     });

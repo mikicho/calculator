@@ -20,15 +20,15 @@ function evaluateTargetConditions(conditions, params) {
 	return true;
 }
 
-function addVarient(buttonsConfig, varient) {
-	const configIndex = _.findIndex(buttonsConfig, ["name", varient.name]);      
+function addVariant(buttonsConfig, variant) {
+	const configIndex = _.findIndex(buttonsConfig, ["name", variant.name]);      
 		
-	if(varient.color) {
-	  buttonsConfig[configIndex].color = varient.color;
+	if(variant.color) {
+	  buttonsConfig[configIndex].color = variant.color;
 	}
 
-	if(varient.switchWith) {
-	  const switchWithIndex = _.findIndex(buttonsConfig, ["name", varient.switchWith]);      
+	if(variant.switchWith) {
+	  const switchWithIndex = _.findIndex(buttonsConfig, ["name", variant.switchWith]);      
 	  [buttonsConfig[configIndex], buttonsConfig[switchWithIndex]] = [buttonsConfig[switchWithIndex], buttonsConfig[configIndex]]
 	}
 
@@ -40,7 +40,7 @@ class TestConfig {
 		experiments.forEach(experiment => {
 			if (evaluateTargetConditions(experiment.target, params)) {
 			  return experiment.variants.reduce((config, variant) => {
-				  return addVarient(config, variant);
+				  return addVariant(config, variant);
 			  }, buttonsConfig);
 			}
 		  });

@@ -1,3 +1,4 @@
+// buttons are in array to preserve their order
 module.exports = [
 	{ name: "AC" },
 	{ name: "+/-" },

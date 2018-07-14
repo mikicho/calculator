@@ -11,15 +11,16 @@ const store = createStore(
   rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
-const buttonsConfig = JSON.parse(window.localStorage.getItem("buttonsConfig"));
+const BUTTONS_CONFIG_KEY = "buttonsConfig"
+const buttonsConfig = JSON.parse(window.localStorage.getItem(BUTTONS_CONFIG_KEY));
 
 if (buttonsConfig) {
   renderCalculator(buttonsConfig);
 } else {
   axios.get("/buttons" + window.location.search).then((buttons) => {
-    renderCalculator(buttons.data);
+    window.localStorage.setItem(BUTTONS_CONFIG_KEY, JSON.stringify(buttons.data));
 
-    window.localStorage.setItem("buttonsConfig", JSON.stringify(buttons.data));
+    renderCalculator(buttons.data);
   });
 }
 
