@@ -16,8 +16,32 @@ For convenience the app has a very simple async loading mechanizm implemented in
 How to run the project
 ---
 ```shell
-git clone https://github.com/reisel/calculator.git
+git clone https://github.com/mikicho/calculator
 cd calculator
 npm install
 npm start
+```
+
+A/B Testing config structure
+---
+The config can be found in `./config/abTest.config.json` and has the following structure:
+```
+{
+	"experiments": [
+		{
+			"target": [
+				{ "country": "us" }, // Can omit if don't need a country filtering
+				{ "percentage": 0.5 } // float number from 0 to 1
+			],
+			"variants": [
+				{ "name": "=", "color": "#1cbb31" },
+				{ "name": "+/-", "color": "#1cbb31", "switchWith": "%" },
+				...
+				{ variant N }
+			]
+		},
+		...
+		{ experiment N }
+	]
+}
 ```
