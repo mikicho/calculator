@@ -11,7 +11,7 @@ const store = createStore(
   rootReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
-axios.get("/buttons").then((buttons) => {
+axios.get("/buttons" + window.location.search).then((buttons) => {
   ReactDOM.render(
     <Provider store={store}>
       <App buttons={buttons.data} />

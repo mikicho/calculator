@@ -1,15 +1,22 @@
 {
 	"experiments": [
 		{
-			"variations": [
+			"target": [
+				{ "country": "us" },
+				{ "percentage": 0.5 }
+			],
+			"variants": [
 				{ "name": "AC", "color": "#432843", "switchWith": "%" },
 				{ "name": "9", "color": "#432843", "switchWith": "3" }
-
 			]
 		},
 		{
-			"variations": [
-				{ "name": "2", "color": "#111222", "switchWith": "8" }
+			"target": [
+				{ "percentage": 0.8 }
+			],
+			"variants": [
+				{ "name": "2", "color": "#111222", "switchWith": "8" },
+				{ "name": "8", "color": "#328FCD" }
 			]
 		}
 	]
